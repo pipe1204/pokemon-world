@@ -10,8 +10,15 @@ const useFetch = (url) => {
   
     useEffect(() => {
         axios.get(url)
-        .then(res => setData(res.data), setLoading(false))
-        .catch(err => setError(true))
+        .then(res => {
+            setData(res.data) 
+            setLoading(false)
+        })
+        .catch(err => {
+            setError(true)
+            setData('')
+            setLoading(false)
+        })
     },[url])
     
     return { data, error, loading }

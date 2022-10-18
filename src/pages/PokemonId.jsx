@@ -22,12 +22,14 @@ const PokemonId = () => {
 
   return (
     <div className='pokemon__page__main-content'>
-    {loading && <Loading />}
     {
       error ? <Page404 />
       :
       <>
-      <ScrollContainer>
+      {
+        loading ? <Loading />
+        :
+        <ScrollContainer>
         <ScrollPage page={0}>
           <Animator animation={batch(Fade(), Sticky())}>
             <div className='pokemon__page__main-header'>
@@ -101,6 +103,7 @@ const PokemonId = () => {
           
         </ScrollPage>
       </ScrollContainer>
+      }
       </>
     }
     </div>
